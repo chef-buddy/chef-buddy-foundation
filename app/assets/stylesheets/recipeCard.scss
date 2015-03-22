@@ -1,0 +1,46 @@
+.recipe-card {
+  border: 2px solid grey;
+  padding: 0;
+  border-radius: .3em;
+}
+
+.recipe-image {
+  // border-bottom: 2px solid black;
+  height: 300px;
+}
+
+.recipe-title  {
+  padding: 1.8em;
+  border-bottom: 2px solid grey;
+  text-align: center;
+  font-size: 1.5em;
+  color: #7f8c8d;
+  background-color: white;
+}
+
+.recipe-action {
+  text-align: center;
+}
+
+.like, .dislike{
+  padding: 1.5em;
+  background-color: #3498db;
+  font-size: 1.2em;
+}
+
+.like a, .dislike a {
+  color: white;  
+}
+
+.dislike {
+  position: relative;
+}
+
+.dislike:after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    right: -0%;
+    height: 100%;
+    border-right: 1px solid white;
+}
