@@ -5,6 +5,9 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    #@response = HTTParty.get('http://chefbuddy.herokuapp.com/api/v1/random_recipe/')
+
+    @response = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/')
   end
 
   # GET /users/1
