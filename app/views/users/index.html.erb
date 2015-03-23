@@ -5,19 +5,11 @@
 <!-- Large pics Yay! -->
 <%= link_to image_tag(@response[0]["largeImage"]), "http://www.yummly.com/recipe/#{@response[0]["id"]}" %>
 
-
-
-
 <h1>Listing Users</h1>
 <h4> All users will direct here, they will only be able to see their own recipes. Do you want to add cards again?<h4>
 
 <h4>This is the recommendation score, not sure what it does: <%= @response[0]["recommendation_score"] %></h4>
 <h4>This is the rating, that's from yummly I assume? <%= @response[0]["rating"] %></h4>
-
-<%#= link_to "Give me another recipe", user_try_path %>
-<%= link_to "try", HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/',
-body: { liked: '1',
-  user: "#{current_user.id}",
-  recipe: "1000",
-},
-headers: {'Content-Type' => 'application/json'})%>
+<h4><%= link_to "Try", users_try_path(recipe_id: @response[0]["id"]), method: :post %>
+<%= link_to "Trash", users_trash_path(recipe_id: @response[0]["id"]), method: :post %>
+<%= link_to "Pass", users_pass_path(recipe_id: @response[0]["id"]), method: :post %></h4>
