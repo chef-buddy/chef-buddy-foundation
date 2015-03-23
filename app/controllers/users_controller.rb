@@ -54,6 +54,33 @@ class UsersController < ApplicationController
     end
   end
 
+#  def try
+#    @result = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/',
+#    :body => { :liked => '1',
+#      :user => "#{current_user.id}",
+#      :recipe => "1000",
+#    }.to_json,
+#    :headers => {'Content-Type' => 'application/json'})
+#  end
+
+#  def trash
+#    @result = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/',
+#    :body => { :liked => '-1',
+#      :user => "#{current_user.id}",
+#      :recipe => "#{@result["recipeName"]}",
+#    }.to_json,
+#    :headers => {'Content-Type' => 'application/json'})
+#  end
+#
+#  def pass
+#    @result = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/',
+#    :body => { :liked => '0',
+#      :user => "#{current_user.id}",
+#      :recipe => "#{@result["recipeName"]}",
+#    }.to_json,
+#    :headers => {'Content-Type' => 'application/json'})
+#  end
+
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy

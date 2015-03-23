@@ -13,3 +13,6 @@
 
 <h4>This is the recommendation score, not sure what it does: <%= @response[0]["recommendation_score"] %></h4>
 <h4>This is the rating, that's from yummly I assume? <%= @response[0]["rating"] %></h4>
+
+<%#= link_to "Give me another recipe", user_try_path %>
+<%= link_to "Pass", 'http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/' + {liked: '1', user: "#{current_user.id}"}.to_params, method: :post%>
