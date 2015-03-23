@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :post_suggested_recipe, only: [:index, :show, :random]
 
   # GET /users
   # GET /users.json
   def index
     @users = User.all
-    #@response = HTTParty.get('http://chefbuddy.herokuapp.com/api/v1/random_recipe/')
+  end
 
-    @response = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/')
+  def random
+    @users = User.all
   end
 
   def random
@@ -58,42 +60,39 @@ class UsersController < ApplicationController
     end
   end
 
-  def set_options
-    @options = {
-    body: {
-        liked: '1', # your columns/data
-        user: 'Roasted-Tomato-_-Yellow-Fin-Tuna-Panini-Melt-986498',
-        id: '1'
-    }
-  }
+ def try
+   @response = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/',
+   :body => { :liked => '1',
+     :user => "#{current_user.id}",
+     :id => params[:recipe_id],
+   }.to_json,
+   :headers => {'Content-Type' => 'application/json'},
+   )
+   render 'index'
 end
 
- def try
-   @result = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/',
-   body: { liked: '1',
-     user: "#{current_user.id}",
-     recipe: "1000",
-   }.to_json,
-   headers: {'Content-Type' => 'application/json'})
- end
 
-#  def trash
-#    @result = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/',
-#    :body => { :liked => '-1',
-#      :user => "#{current_user.id}",
-#      :recipe => "#{@result["recipeName"]}",
-#    }.to_json,
-#    :headers => {'Content-Type' => 'application/json'})
-#  end
-#
-#  def pass
-#    @result = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/',
-#    :body => { :liked => '0',
-#      :user => "#{current_user.id}",
-#      :recipe => "#{@result["recipeName"]}",
-#    }.to_json,
-#    :headers => {'Content-Type' => 'application/json'})
-#  end
+def trash
+  @response = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/',
+  :body => { :liked => '-1',
+    :user => "#{current_user.id}",
+    :id => params[:recipe_id],
+  }.to_json,
+  :headers => {'Content-Type' => 'application/json'},
+  )
+  render 'index'
+end
+
+def pass
+  @response = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/',
+  :body => { :liked => '0',
+    :user => "#{current_user.id}",
+    :id => params[:recipe_id],
+  }.to_json,
+  :headers => {'Content-Type' => 'application/json'},
+  )
+  render 'index'
+end
 
   # DELETE /users/1
   # DELETE /users/1.json
@@ -105,14 +104,21 @@ end
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:first_name, :last_name, :uid, :provider)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  private def set_user
+    @user = User.find(params[:id])
+  end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  private def user_params
+    params.require(:user).permit(:first_name, :last_name, :uid, :provider)
+  end
+  private def get_a_random_recipe
+    @response = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/random_recipe/')
+  end
+
+  private def post_suggested_recipe
+    @response = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/')
+  end
+
 end
