@@ -54,14 +54,24 @@ class UsersController < ApplicationController
     end
   end
 
-#  def try
-#    @result = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/',
-#    :body => { :liked => '1',
-#      :user => "#{current_user.id}",
-#      :recipe => "1000",
-#    }.to_json,
-#    :headers => {'Content-Type' => 'application/json'})
-#  end
+  def set_options
+    @options = {
+    body: {
+        liked: '1', # your columns/data
+        user: 'Roasted-Tomato-_-Yellow-Fin-Tuna-Panini-Melt-986498',
+        id: '1'
+    }
+  }
+end
+
+ def try
+   @result = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/',
+   body: { liked: '1',
+     user: "#{current_user.id}",
+     recipe: "1000",
+   }.to_json,
+   headers: {'Content-Type' => 'application/json'})
+ end
 
 #  def trash
 #    @result = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/',

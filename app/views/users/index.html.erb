@@ -15,4 +15,9 @@
 <h4>This is the rating, that's from yummly I assume? <%= @response[0]["rating"] %></h4>
 
 <%#= link_to "Give me another recipe", user_try_path %>
-<%= link_to "Pass", 'http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/' + {liked: '1', user: "#{current_user.id}"}.to_params, method: :post%>
+<%= link_to "try", HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/',
+body: { liked: '1',
+  user: "#{current_user.id}",
+  recipe: "1000",
+},
+headers: {'Content-Type' => 'application/json'})%>
