@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'home/show'
+  get 'home/index'
   root 'users#index'
   resources :recipes
   devise_for :users, controllers: {registrations: 'registrations'}
