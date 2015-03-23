@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'home/show'
-  get 'home/index'
+  post 'users/random'
+
   root 'users#index'
   resources :recipes
   devise_for :users, controllers: {registrations: 'registrations'}

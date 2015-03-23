@@ -1,20 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html>
+<head>
+  <title>ChefBuddyRails</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+<div id="container">
 
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-  </head>
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="#">TasteBud</a></h1>
+    </li>
+  </ul>
 
-  <body>
+  <section class="top-bar-section">
+    <ul class="right">
+      <% if user_signed_in?  %>
+      <li class="has-dropdown">
+        <a href="#"><%= current_user.email %></a>
+        <ul class="dropdown">
+          <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+          <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+        </ul>
+      </li>
+      <% else %>
+      <li><a href="#" data-reveal-id="myModal">Log In</a></li>
+      <li><%= link_to "Sign Up", new_user_registration_path %></li>
+      <% end %>
+    </ul>
+  </section>
+</nav>
 
-    <%= yield %>
+<div id="myModal" class="reveal-modal tiny" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
 
-  </body>
+      <!-- <fieldset>
+        <legend>Create an Account</legend>
+          <div class="field">
+            <input type="text" placeholder="Email Address">
+          </div>
+          <div class="field">
+            <input type="text" placeholder="Password">
+          </div>
+          <label class="field">
+            <input type="checkbox">
+            Remember Me?
+          </label>
+          <div class="actions">
+          </div>
+      </fieldset> -->
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+
+      <div class="container">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+
+</body>
 </html>
+
+<!-- <div id="user nav">
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Tastebud</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if user_signed_in?  %>
+        <li>Logged in as <strong> <%= current_user.email %></strong></li>
+        <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+        <li>|</li>
+        <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+        <li><%= link_to "Sign Up", new_user_registration_path %></li>
+        <li>|</li>
+        <li><%= link_to "Login", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav> -->
