@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'home/show'
   post 'users/random'
 
-  root 'users#index'
+  root 'home#index'
   resources :recipes
   devise_for :users, controllers: {registrations: 'registrations'}
   resources :users
