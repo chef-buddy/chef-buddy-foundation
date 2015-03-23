@@ -11,8 +11,5 @@
 
 <h4>This is the recommendation score: <%= @response[0]["recommendation_score"] %></h4>
 <h4>This is the Yummly Rating: <%= @response[0]["rating"] %></h4>
-
-<h4>This is the recommendation score, not sure what it does: <%= @response[0]["recommendation_score"] %></h4>
-<h4>This is the rating, that's from yummly I assume? <%= @response[0]["rating"] %></h4>
-
-<%#= link_to "Give me another recipe", user_try_path %>
+<h4>User ID is: <%= current_user.id %></h4>
+<h4>RecipeID is: <%= @response[0]["id"] %></h4>
