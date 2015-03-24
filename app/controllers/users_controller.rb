@@ -70,25 +70,26 @@ class UsersController < ApplicationController
    body: { liked: "1",
      user: "#{current_user.id}",
      recipe: params[:recipe_id],
-   }.to_json)
-
+   })
    Recipe.create(name: params[:recipe_name], url: params[:recipe_url],
       picture: params[:recipe_large_image], user_id: current_user.id)
    render 'index'
-
-end
+  end
 
 
 def trash
+  @user = User.find_by_id(current_user.id)
+  @recipes = Recipe.all
   @response = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/',
-  :body => { :liked => '-1',
-    :user => "#{current_user.id}",
-    :recipe => params[:recipe_id],
-  }.to_json,
-  :headers => {'Content-Type' => 'application/json'},
-  )
-  render 'index'
+  body: { liked: "-1",
+    user: "#{current_user.id}",
+    recipe: params[:recipe_id],
+    })
+    Recipe.create(name: params[:recipe_name], url: params[:recipe_url],
+    picture: params[:recipe_large_image], user_id: current_user.id)
+    render 'index'
 end
+
 
 def pass
   @response = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/',
