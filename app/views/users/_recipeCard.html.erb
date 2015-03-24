@@ -20,7 +20,10 @@
   <div class="recipe-card small-6 small-offset-3 columns">
     <div class="recipe-image">
       <%= link_to image_tag(@response[0]["largeImage"]), "http://www.yummly.com/recipe/#{@response[0]["id"]}" %>
-      <!-- <span class="score"><%= @response[0]["recommendation_score"] %></span> -->
+      <span class="score"><%= @response[0]["recommendation_score"] %></span>
+    </div>
+    <div class="recipe-score">
+      <!-- <div class="score"><%= @response[0]["recommendation_score"] %></div> -->
     </div>
     <div class="recipe-title">
       <!-- <%= link_to (@response[0]["recipeName"]), "http://www.yummly.com/recipe/#{@response[0]["id"]}" %> -->
@@ -32,5 +35,53 @@
       <%= link_to "Try", users_try_path(recipe_id: @response[0]["id"], recipe_name: @response[0]["recipeName"],
         recipe_url:@response[0]["id"], recipe_large_image: @response[0]["largeImage"]), method: :post, :class=> 'like small-6 columns' %>
     </div>
+    <div align="center" class="fond">
+      <div class="contener_general">
+          <div class="contener_mixte"><div class="ballcolor ball_1">&nbsp;</div></div>
+          <div class="contener_mixte"><div class="ballcolor ball_2">&nbsp;</div></div>
+          <div class="contener_mixte"><div class="ballcolor ball_3">&nbsp;</div></div>
+          <div class="contener_mixte"><div class="ballcolor ball_4">&nbsp;</div></div>
+      </div>
+      <div style="padding-top:35px;">
+      <div style=" color:#999999; font-weight:300; font-size:30px; font-family:'Roboto';padding-top:20px;">SCIENCE and MAGIC <font style="font-weight:400;">at WORK</font></div>
+      </div>
+    </div>
+
   </div>
 </div>
+
+
+
+<!-- <div class="row">
+  <div class="testContainer large-12 columns">
+      <div class="test-card large-4 columns text-center">
+        <div class="test-title text-center"><%= @response[0]["recipeName"] %></div>
+        <div class="test-score"><%= @response[0]["recommendation_score"] %></div>
+        <span class="test-time large-4 columns">30 Minutes</span>
+        <span class="test-calories large-4 columns">200 Calories</span>
+        <span class="test-servings large-4 columns">4 Servings</span>
+        <div class="test-ingredients large-12 columns">
+
+          <div class="quantity large-4 columns">
+            <p>20oz</p>
+            <p>2 Cups</p>
+            <p>20 oz</p>
+            <p>20 oz</p>
+            <p>20 oz</p>
+            <p>20 oz</p>
+            <p>20 oz</p>
+          </div>
+          <div class="ingredient large-8 columns">
+            <p>Lots O Flour</p>
+            <p>Lots O Flour</p>
+            <p>Lots O Flour</p>
+            <p>Lots O Flour</p>
+            <p>Lots O Flour</p>
+            <p>Lots O Flour</p>
+            <p>Lots O Flour</p>
+          </div>
+        </div>
+        <div class="test-share"></div>
+      </div>
+    </div>
+  </div> -->

@@ -1,5 +1,15 @@
+TODO:
+// Toggle topbar to sidebar after 10 selections
+// List of suggested recipes slides up
+// Single recipe suggestion to daily suggestion page?  Or at top everyday?
+// Single recipe slides to the right to reveal new recipe.
+// When recipe trashed, remove from DOM
+// Show loading icon
 
+<div id="messageContainer"><%=render 'initialMessage' %></div>
 <div id="recipeContainer"><%= render 'recipeCard' %></div>
+
+<!-- <h4>This is the Yummly Rating: <%= @response[0]["rating"] %></h4> -->
 
 <!-- <%= @response[0]["recipeName"] %>
 <p><%= @response[0]["recommendation_score"] %></p> -->
@@ -12,6 +22,7 @@
 <h4>This is the recommendation score: <%= @response[0]["recommendation_score"] %></h4>
 <h4>This is the Yummly Rating: <%= @response[0]["rating"] %></h4>
 <h4>User ID is: <%= current_user.id %></h4>
+
 <h4>RecipeID is: <%= @response[0]["id"] %></h4>
 <h4> Liked Recipes </h4>
 
@@ -23,10 +34,10 @@
   <div class="recipe-image">
 
       <%= link_to image_tag(r.picture), "http://www.yummly.com/recipe/#{r.url}" %>
-      <!-- <span class="score"><%= @response[0]["recommendation_score"] %></span> -->
+       <span class="score"><%= @response[0]["recommendation_score"] %></span> --> -->
 
     <div class="recipe-title">
-      <!-- <%= link_to (@response[0]["recipeName"]), "http://www.yummly.com/recipe/#{@response[0]["id"]}" %> -->
+     <%= link_to (@response[0]["recipeName"]), "http://www.yummly.com/recipe/#{@response[0]["id"]}" %> -->
       <%= r.name %>
     </div>
 
@@ -34,3 +45,4 @@
   </div>
 </div>
 <% end %>
+<h4>RecipeID is: <%= @response[0]["id"] %></h4> -->
