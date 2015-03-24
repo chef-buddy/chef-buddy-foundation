@@ -1,5 +1,15 @@
+TODO:
+// Toggle topbar to sidebar after 10 selections
+// List of suggested recipes slides up
+// Single recipe suggestion to daily suggestion page?  Or at top everyday?
+// Single recipe slides to the right to reveal new recipe.
+// When recipe trashed, remove from DOM
+// Show loading icon
 
+<div id="messageContainer"><%=render 'initialMessage' %></div>
 <div id="recipeContainer"><%= render 'recipeCard' %></div>
+
+<!-- <h4>This is the Yummly Rating: <%= @response[0]["rating"] %></h4> -->
 
 <!-- <%= @response[0]["recipeName"] %>
 <p><%= @response[0]["recommendation_score"] %></p> -->
@@ -8,11 +18,3 @@
 <!-- <%= link_to image_tag(@response[0]["largeImage"]), "http://www.yummly.com/recipe/#{@response[0]["id"]}" %>
 <%= link_to "Trash", users_random_path, method: :post, remote: true %>
 <%= link_to "Try", users_random_path, method: :post, remote: true %> -->
-
-<h4>This is the recommendation score: <%= @response[0]["recommendation_score"] %></h4>
-<h4>This is the Yummly Rating: <%= @response[0]["rating"] %></h4>
-
-<h4>This is the recommendation score, not sure what it does: <%= @response[0]["recommendation_score"] %></h4>
-<h4>This is the rating, that's from yummly I assume? <%= @response[0]["rating"] %></h4>
-
-<%#= link_to "Give me another recipe", user_try_path %>

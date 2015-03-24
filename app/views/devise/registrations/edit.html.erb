@@ -1,4 +1,7 @@
 <button class="back-edit"><%= link_to "Back", :back %></button>
+
+<%= render '/home/sidenav' %>
+
 <h2 class="heading">Manage Your Account</h2>
 
 <%= form_for(resource, as: resource_name, :class=> 'form', url: registration_path(resource_name), html: { method: :put }) do |f| %>
