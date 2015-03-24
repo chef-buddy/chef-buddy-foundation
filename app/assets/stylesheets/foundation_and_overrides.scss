@@ -1131,7 +1131,7 @@ $reveal-close-font-size: rem-calc(20);
 
 // We use these to control list styles.
 // $side-nav-list-type: none;
-// $side-nav-list-position: inside;
+$side-nav-list-position: inside;
 // $side-nav-list-margin: rem-calc(0 0 7 0);
 
 // We use these to control link styles.
@@ -1156,7 +1156,7 @@ $reveal-close-font-size: rem-calc(20);
 // We use these to control border styles
 // $side-nav-divider-size: 1px;
 // $side-nav-divider-style: solid;
-// $side-nav-divider-color: scale-color($white, $lightness: 10%);
+$side-nav-divider-color: scale-color(black, $lightness: 60%);
 
 // 27. Split Buttons
 // - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -1366,7 +1366,7 @@ $reveal-close-font-size: rem-calc(20);
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-$topbar-bg-color: $primary-color;
+$topbar-bg-color: white;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
