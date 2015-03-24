@@ -1,11 +1,14 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy,]
   before_action :post_suggested_recipe, only: [:index, :show, :random]
 
   # GET /users
   # GET /users.json
   def index
     @users = User.all
+    @recipes = Recipe.all
+    @recipe = Recipe.new
+    @user = User.new
   end
 
   def random
@@ -61,14 +64,18 @@ class UsersController < ApplicationController
   end
 
  def try
+   @user = User.find_by_id(current_user.id)
+   @recipes = Recipe.all
    @response = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/',
-   :body => { :liked => '1',
-     :user => "#{current_user.id}",
-     :id => params[:recipe_id],
-   }.to_json,
-   :headers => {'Content-Type' => 'application/json'},
-   )
+   body: { liked: "1",
+     user: "#{current_user.id}",
+     recipe: params[:recipe_id],
+   }.to_json)
+
+   Recipe.create(name: params[:recipe_name], url: params[:recipe_url],
+      picture: params[:recipe_large_image], user_id: current_user.id)
    render 'index'
+
 end
 
 
@@ -76,7 +83,7 @@ def trash
   @response = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/',
   :body => { :liked => '-1',
     :user => "#{current_user.id}",
-    :id => params[:recipe_id],
+    :recipe => params[:recipe_id],
   }.to_json,
   :headers => {'Content-Type' => 'application/json'},
   )
@@ -111,7 +118,7 @@ end
   end
   # Never trust parameters from the scary internet, only allow the white list through.
   private def user_params
-    params.require(:user).permit(:first_name, :last_name, :uid, :provider)
+    params.require(:user).permit(:first_name, :last_name, :uid, :provider, recipe_attributes: [:name, :url, :picture])
   end
   private def get_a_random_recipe
     @response = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/random_recipe/')
