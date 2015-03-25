@@ -5,44 +5,9 @@ TODO:
 // Single recipe slides to the right to reveal new recipe.
 // When recipe trashed, remove from DOM
 // Show loading icon
+// On liked recipes page, option to trash or love (and/or rate 5 forks or something)
 
 <div id="messageContainer"><%=render 'initialMessage' %></div>
 <div id="recipeContainer"><%= render 'recipeCard' %></div>
 <div id="sideNav"><%= render '/home/sidenav' %></div>
-<!-- <h4>This is the Yummly Rating: <%= @response[0]["rating"] %></h4> -->
-
-<!-- <%= @response[0]["recipeName"] %>
-<p><%= @response[0]["recommendation_score"] %></p> -->
-<!-- These lines will show recipe stuff -->
-<!-- Large pics Yay! -->
-<!-- <%= link_to image_tag(@response[0]["largeImage"]), "http://www.yummly.com/recipe/#{@response[0]["id"]}" %>
-<%= link_to "Trash", users_random_path, method: :post, remote: true %>
-<%= link_to "Try", users_random_path, method: :post, remote: true %> -->
-
-<h4>This is the recommendation score: <%= @response[0]["recommendation_score"] %></h4>
-<h4>This is the Yummly Rating: <%= @response[0]["rating"] %></h4>
-<h4>User ID is: <%= current_user.id %></h4>
-
-<h4>RecipeID is: <%= @response[0]["id"] %></h4>
-<h4> Liked Recipes </h4>
-
-<% @user.recipes.each do |r| %>
-<div class="row">
-
-<div class="recipe-card small-6 small-offset-3 columns">
-
-  <div class="recipe-image">
-
-      <%= link_to image_tag(r.picture), "http://www.yummly.com/recipe/#{r.url}" %>
-       <span class="score"><%= @response[0]["recommendation_score"] %></span> --> -->
-
-    <div class="recipe-title">
-     <%= link_to (@response[0]["recipeName"]), "http://www.yummly.com/recipe/#{@response[0]["id"]}" %> -->
-      <%= r.name %>
-    </div>
-
-    </div>
-  </div>
-</div>
-<% end %>
-<h4>RecipeID is: <%= @response[0]["id"] %></h4> -->
+<div id="likedRecipes"><%= render 'likedRecipes' %></div>

@@ -1,0 +1,35 @@
+ <!-- <div class="row">
+ <% @user.recipes.each do |r| %>
+  <div class="liked-recipe small-4 columns" id="small-card">
+    <div class="liked-image">
+      <%= link_to image_tag(r.picture), "http://www.yummly.com/recipe/#{r.url}" %>
+      <div class="score text-center"><%= @response[0]["recommendation_score"] %></div>
+    </div>
+    <div class="liked-title">
+      <%= r.name %>
+    </div>
+  </div>
+  <% end %>
+</div> -->
+
+<div class="row">
+  <% @user.recipes.each do |r| %>
+  <div class="recipe-card small-4 columns">
+    <div class="recipe-image liked">
+      <%= link_to image_tag(r.picture), "http://www.yummly.com/recipe/#{r.url}" %>
+      <div class="score text-center"><%= @response[0]["recommendation_score"] %></div>
+    </div>
+    <div class="recipe-title liked">
+      <%= r.name %>
+    </div>
+
+    <div class="recipe-action hide">
+      <%= link_to "Trash", users_trash_path(recipe_id: @response[0]["id"], recipe_name: @response[0]["recipeName"],
+      recipe_url:@response[0]["id"], recipe_large_image: @response[0]["largeImage"]), method: :post, :class=> 'like small-6 columns' %>
+      <%= link_to "Try", users_try_path(recipe_id: @response[0]["id"], recipe_name: @response[0]["recipeName"],
+        recipe_url:@response[0]["id"], recipe_large_image: @response[0]["largeImage"]), method: :post, :class=> 'like small-6 columns' %>
+    </div>
+
+  </div>
+  <% end %>
+</div>
