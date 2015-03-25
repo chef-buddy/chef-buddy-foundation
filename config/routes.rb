@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   post 'users/try'
   post 'users/trash'
   post 'users/pass'
-
+  get 'users/recipe_list'
+  post 'users/recipe_list'
   root 'home#index'
   resources :recipes
   devise_for :users, controllers: {registrations: 'registrations'}

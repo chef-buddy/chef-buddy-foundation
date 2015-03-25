@@ -11,12 +11,16 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def recipe_list
+    @response = HTTParty.get('http://chefbuddy.herokuapp.com/api/v1/recipe_list/')
+  end
+
   def random
     @users = User.all
   end
 
   def random
-  @response = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/')
+    @response = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/')
   end
 
   # GET /users/1
