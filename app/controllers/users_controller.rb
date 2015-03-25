@@ -71,10 +71,11 @@ class UsersController < ApplicationController
      user: "#{current_user.id}",
      recipe: params[:recipe_id],
    })
-   Recipe.create(name: params[:recipe_name], url: params[:recipe_url],
-      picture: params[:recipe_large_image], user_id: current_user.id)
-   render 'index'
-  end
+    Recipe.find_or_create_by(name: params[:recipe_name], url: params[:recipe_url],
+    picture: params[:recipe_large_image], user_id: current_user.id)
+
+    render 'index'
+end
 
 
 def trash
@@ -89,16 +90,16 @@ def trash
 end
 
 
-def pass
-  @response = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/',
-  :body => { :liked => '0',
-    :user => "#{current_user.id}",
-    :id => params[:recipe_id],
-  }.to_json,
-  :headers => {'Content-Type' => 'application/json'},
-  )
-  render 'index'
-end
+#def pass
+#  @response = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/',
+#  :body => { :liked => '0',
+#    :user => "#{current_user.id}",
+#    :id => params[:recipe_id],
+#  }.to_json,
+#  :headers => {'Content-Type' => 'application/json'},
+#  )
+#  render 'index'
+#end
 
   # DELETE /users/1
   # DELETE /users/1.json
