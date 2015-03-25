@@ -1,0 +1,10 @@
+<% 10.times.each do |n = 0|%>
+
+<%= link_to image_tag(@response[n]["largeImage"]), "http://www.yummly.com/recipe/#{@response[n]["id"]}" %>
+<div><%= @response[n]["recommendation_score"] %></div>
+<div class="recipe-title">
+  <%= @response[n]["recipeName"] %>
+
+</div>
+<% n += 1 %>
+<% end %>
