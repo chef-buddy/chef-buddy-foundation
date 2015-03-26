@@ -17,3 +17,47 @@
   </div>
   <% end %>
 </div>
+
+
+<%#= link_to "Try", home_try_path(recipe_id: @response["id"]), method: :post %>
+<%#= form_tag users_recipe_list_path  do %>
+  <%# @options.each do |o| %>
+    <%#= o %>
+    <%#= check_box :options_from_view, {multiple: true}, o, nil %>
+    <%#= check_box_tag :options_from_view[], o %>
+  <%# end %>
+  <%#= submit_tag %>
+<%# end %>
+
+<form action=recipe_list method="GET">
+  <input type="checkbox" name="filters[]" value="dairy" id="dairy">
+  <label for="dairy">dairy</label>
+  <input type="checkbox" name="filters[]" value="egg" id="egg">
+  <label for="egg">egg</label>
+  <input type="checkbox" name="filters[]" value="gluten" id="gluten">
+  <label for="gluten">gluten</label>
+  <input type="checkbox" name="filters[]" value="sesame" id="sesame">
+  <label for="sesame">sesame</label>
+  <input type="checkbox" name="filters[]" value="soy" id="soy">
+  <label for="soy">soy</label>
+  <input type="checkbox" name="filters[]" value="sulfite" id="sulfite">
+  <label for="sulfite">sulfite</label>
+  <input type="checkbox" name="filters[]" value="nut" id="nut">
+  <label for="nut">nut</label>
+  <input type="checkbox" name="filters[]" value="wheat" id="wheat">
+  <label for="wheat">wheat</label>
+  <input type="checkbox" name="filters[]" value="lacto" id="lacto">
+  <label for="lacto">lacto</label>
+  <input type="checkbox" name="filters[]" value="ovo" id="ovo">
+  <label for="ovo">ovo</label>
+  <input type="checkbox" name="filters[]" value="pescetarian" id="pescetarian">
+  <label for="pescetarian">pescetarian</label>
+  <input type="checkbox" name="filters[]" value="vegan" id="vegan">
+  <label for="vegan">vegan</label>
+  <input type="checkbox" name="filters[]" value="vegetarian" id="vegetarian">
+  <label for="vegetarian">vegetarian</label>
+  <input type="checkbox" name="filters[]" value="paleo" id="paleo">
+  <label for="paleo">paleo</label>
+  <input type = "text" name="search">
+  <input type="submit">
+  </form>
