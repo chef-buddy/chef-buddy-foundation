@@ -16,7 +16,6 @@ class UsersController < ApplicationController
     temp_string = ""
     temp_options = params["filters"] || []
     temp_search = params["search"] || []
-
     temp_options.each do |to|
       temp_string += "&filter=#{to}"
     end
