@@ -14,12 +14,14 @@ class UsersController < ApplicationController
 
   def recipe_list
     temp_string = ""
-    @temp_options = params["filters"] || []
-    @temp_options.each do |to|
+    temp_options = params["filters"] || []
+    temp_search = params["search"] || []
+
+    temp_options.each do |to|
       temp_string += "&filter=#{to}"
     end
     @user = User.find_by_id(current_user.id)
-    @response = HTTParty.get("http://chefbuddy.herokuapp.com/api/v1/recipe_list/?user=#{current_user.id}&" + "#{temp_string}")
+    @response = HTTParty.get("http://chefbuddy.herokuapp.com/api/v1/recipe_list/?user=#{current_user.id}&" + "#{temp_string}" +"&search=#{temp_search}")
     @options = ["dairy", "egg", "gluten", "sesame", "soy", "sulfite", "nut",
       "wheat", "lacto", "ovo", "pescetarian", "vegan", "vegetarian", "paleo"]
   end
