@@ -5,14 +5,23 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
     @recipes = Recipe.all
     @recipe = Recipe.new
-    @user = User.new
+    @user = User.find_by_id(current_user.id)
   end
 
+#http://chefbuddy.herokuapp.com/api/v1/recipe_list/?user=2&filter=paleo&filter=dairy
+
   def recipe_list
-    @response = HTTParty.get('http://chefbuddy.herokuapp.com/api/v1/recipe_list/')
+    temp_string = ""
+    @temp_options = params["filters"] || []
+    @temp_options.each do |to|
+      temp_string += "&filter=#{to}"
+    end
+    @user = User.find_by_id(current_user.id)
+    @response = HTTParty.get("http://chefbuddy.herokuapp.com/api/v1/recipe_list/?user=#{current_user.id}&" + "#{temp_string}")
+    @options = ["dairy", "egg", "gluten", "sesame", "soy", "sulfite", "nut",
+      "wheat", "lacto", "ovo", "pescetarian", "vegan", "vegetarian", "paleo"]
   end
 
   def random
@@ -77,7 +86,6 @@ class UsersController < ApplicationController
    })
     Recipe.find_or_create_by(name: params[:recipe_name], url: params[:recipe_url],
     picture: params[:recipe_large_image], user_id: current_user.id)
-
     render 'index'
 end
 
