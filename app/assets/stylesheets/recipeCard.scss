@@ -4,15 +4,19 @@ body {
 }
 
 .testContainer {
-  height: 700px;
+  height: 600px;
+  align: right;
   // background-color: red;
-  background: url('http://www.morningadvertiser.co.uk/var/plain_site/storage/images/publications/hospitality/morningadvertiser.co.uk/pub-food/good-food-guide-editor-calls-for-more-veggie-options-on-pub-menus/8422626-1-eng-GB/Good-Food-Guide-editor-calls-for-more-veggie-options-on-pub-menus.jpg') ;
-  background-size: cover;
+  background: no-repeat;
+  background-size: contain;
   position: relative;
+  -webkit-box-shadow: 3px 3px 14px -2px rgba(0,0,0,0.75);
+  -moz-box-shadow: 3px 3px 14px -2px rgba(0,0,0,0.75);
+  box-shadow: 3px 3px 14px -2px rgba(0,0,0,0.75);
 }
 
 .test-card {
-  height: 650px;
+  height: 550px;
   padding: 0;
   background-color: white;
   font-size: 1.2em;
@@ -25,27 +29,12 @@ body {
 }
 
 .test-title {
-  font-size: 1.3em;
-  margin-top: 1em;
-  padding: 1em;
-  border: 1px solid black;
-}
-
-.test-score {
   font-size: 1.5em;
-  text-align: center;
-  padding: 1.5em;
-}
-
-.test-time, .test-calories, .test-servings {
-  text-align: center;
-  border: 1px solid black;
-  font-size: 1em;
-  font-color: #59544F;
+  margin-top: .5em;
+  padding: 1em;
 }
 
 .test-ingredients {
-  border: 1px solid black;
   font-size: .7em;
   line-height: 1em;
   text-align: center;
@@ -70,12 +59,14 @@ body {
 }
 
 .recipe-image {
-  max-height: 300px;
+  height: 300px;
   position: relative;
+  background: no-repeat;
+  background-size: cover;
 }
 
 .recipe-image img {
-  max-height: 300px;
+  // max-height: 300px;
 }
 
 .recipe-title  {

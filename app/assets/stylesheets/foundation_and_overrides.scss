@@ -1366,7 +1366,7 @@ $side-nav-divider-color: scale-color(black, $lightness: 60%);
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-$topbar-bg-color: white;
+$topbar-bg-color: $primary-color;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin

@@ -15,5 +15,10 @@
 //= require foundation
 //= require turbolinks
 //= require_tree .
+//= require mixitup
 
 $(function(){ $(document).foundation(); });
+
+ $('#Container').mixItUp(); // an instance now exists in the session memory
+
+$(document).foundation('dropdown', 'reflow');

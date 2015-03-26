@@ -1,0 +1,25 @@
+<!--TOPBAR NAVIGATION -->
+  <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="#"><%= link_to "TasteBud", users_path %></a></h1>
+      </li>
+    </ul>
+    <section class="top-bar-section">
+      <ul class="right">
+        <% if user_signed_in?  %>
+        <li class="has-dropdown">
+          <a href="#"><%= current_user.email %></a>
+          <ul class="dropdown">
+            <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+            <li><%= link_to "Suggested Recipes", users_recipe_list_path %></li>
+            <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </li>
+        <% else %>
+        <li><a href="#" data-reveal-id="myModal">Log In</a></li>
+        <li><%= link_to "Sign Up", new_user_registration_path %></li>
+        <% end %>
+      </ul>
+    </section>
+  </nav>

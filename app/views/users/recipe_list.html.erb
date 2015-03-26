@@ -1,10 +1,19 @@
-<% 10.times.each do |n = 0|%>
 
-<%= link_to image_tag(@response[n]["largeImage"]), "http://www.yummly.com/recipe/#{@response[n]["id"]}" %>
-<div><%= @response[n]["recommendation_score"] %></div>
-<div class="recipe-title">
-  <%= @response[n]["recipeName"] %>
+<%= render 'topbar' %>
 
+<h1 class="text-center">Suggested Recipes</h1>
+
+<div class="row">
+  <% 10.times.each do |n = 0|%>
+  <div class="recipe-card small-4 columns">
+    <div class="recipe-image liked">
+      <%= link_to image_tag(@response[n]["largeImage"]), "http://www.yummly.com/recipe/#{@response[n]["id"]}" %>
+      <div class="score text-center"><%= @response[n]["recommendation_score"] %></div>
+    </div>
+    <div class="recipe-title liked">
+      <%= @response[n]["recipeName"] %>
+    </div>
+    <% n += 1 %>
+  </div>
+  <% end %>
 </div>
-<% n += 1 %>
-<% end %>
