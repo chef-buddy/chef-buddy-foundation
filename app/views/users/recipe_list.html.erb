@@ -1,10 +1,105 @@
 
 <%= render 'topbar' %>
 
+
+<header class="cd-header">
+	<h1>Content Filter</h1>
+</header>
+
+<main class="cd-main-content">
+	<div class="cd-tab-filter-wrapper">
+		<div class="cd-tab-filter">
+			<ul class="cd-filters">
+				<li class="placeholder">
+					<a data-type="suggested-recipes" href="#0"></a> <!-- selected option on mobile -->
+				</li>
+				<li class="filter" data-filter=".suggested-recipes"><a href="#0" data-type="suggested-recipes">Suggested Recipes</a></li>
+				<li class="filter" data-filter=".liked-recipes"><a href="#0" data-type="liked-recipes">Liked Recipes</a></li>
+			</ul> <!-- cd-filters -->
+		</div> <!-- cd-tab-filter -->
+	</div> <!-- cd-tab-filter-wrapper -->
+
+	<section class="cd-gallery">
+		<ul>
+      <% 10.times.each do |n = 0| %>
+			<li class="mix suggested-recipes check1 radio2 option3">
+        <div class="recipe-b-image">
+          <%= link_to image_tag(@response[n]["largeImage"]), "http://www.yummly.com/recipe/#{@response[n]["id"]}" %>
+          <%= @response[n]["recommendation_score"] %>
+        </div>
+        <div class="recipe-name">
+          <%= @response[n]["recipeName"] %>
+        </div>
+        <div class="recipe-action">
+          <%= link_to "Trash", users_trash_path(recipe_id: @response[0]["id"], recipe_name: @response[0]["recipeName"],
+          recipe_url:@response[0]["id"], recipe_large_image: @response[0]["largeImage"]), method: :post, :class=> 'like small-6 columns' %>
+          <%= link_to "Try", users_try_path(recipe_id: @response[0]["id"], recipe_name: @response[0]["recipeName"],
+          recipe_url:@response[0]["id"], recipe_large_image: @response[0]["largeImage"]), method: :post, :class=> 'like small-6 columns' %>
+        </div>
+      </li>
+      <% n += 1 %>
+      <% end %>
+      <% @user.recipes.each do |r| %>
+      <li class="mix liked-recipes check1 radio2 option3"><%= link_to image_tag(r.picture), "http://www.yummly.com/recipe/#{r.url}" %></li>
+      <% end %>
+			<li class="gap"></li>
+		</ul>
+		<div class="cd-fail-message">No results found</div>
+	</section> <!-- cd-gallery -->
+
+	<div class="cd-filter">
+		<form>
+			<div class="cd-filter-block">
+				<h4>Filters</h4>
+
+				<div class="cd-filter-content">
+          <form action=recipe_list method="GET">
+            <input type="checkbox" name="filters[]" value="dairy" id="dairy">
+            <label for="dairy">dairy</label>
+            <input type="checkbox" name="filters[]" value="egg" id="egg">
+            <label for="egg">egg</label>
+            <input type="checkbox" name="filters[]" value="gluten" id="gluten">
+            <label for="gluten">gluten</label>
+            <input type="checkbox" name="filters[]" value="sesame" id="sesame">
+            <label for="sesame">sesame</label>
+            <input type="checkbox" name="filters[]" value="soy" id="soy">
+            <label for="soy">soy</label>
+            <input type="checkbox" name="filters[]" value="sulfite" id="sulfite">
+            <label for="sulfite">sulfite</label>
+            <input type="checkbox" name="filters[]" value="nut" id="nut">
+            <label for="nut">nut</label>
+            <input type="checkbox" name="filters[]" value="wheat" id="wheat">
+            <label for="wheat">wheat</label>
+            <input type="checkbox" name="filters[]" value="lacto" id="lacto">
+            <label for="lacto">lacto</label>
+            <input type="checkbox" name="filters[]" value="ovo" id="ovo">
+            <label for="ovo">ovo</label>
+            <input type="checkbox" name="filters[]" value="pescetarian" id="pescetarian">
+            <label for="pescetarian">pescetarian</label>
+            <input type="checkbox" name="filters[]" value="vegan" id="vegan">
+            <label for="vegan">vegan</label>
+            <input type="checkbox" name="filters[]" value="vegetarian" id="vegetarian">
+            <label for="vegetarian">vegetarian</label>
+            <input type="checkbox" name="filters[]" value="paleo" id="paleo">
+            <label for="paleo">paleo</label>
+            <input type = "text" name="search">
+            <input type="submit">
+          </form>
+				</div> <!-- cd-filter-content -->
+			</div> <!-- cd-filter-block -->
+		</form>
+
+		<a href="#0" class="cd-close">Close</a>
+	</div> <!-- cd-filter -->
+
+	<a href="#0" class="cd-filter-trigger">Filters</a>
+</main> <!-- cd-main-content -->
+
+
 <h1 class="text-center">Suggested Recipes</h1>
 
 <div class="row">
-  <% 10.times.each do |n = 0|%>
+  <% 10.times.each do |n = 0| %>
   <div class="recipe-card small-4 columns">
     <div class="recipe-image liked">
       <%= link_to image_tag(@response[n]["largeImage"]), "http://www.yummly.com/recipe/#{@response[n]["id"]}" %>
@@ -28,36 +123,3 @@
   <%# end %>
   <%#= submit_tag %>
 <%# end %>
-
-<form action=recipe_list method="GET">
-  <input type="checkbox" name="filters[]" value="dairy" id="dairy">
-  <label for="dairy">dairy</label>
-  <input type="checkbox" name="filters[]" value="egg" id="egg">
-  <label for="egg">egg</label>
-  <input type="checkbox" name="filters[]" value="gluten" id="gluten">
-  <label for="gluten">gluten</label>
-  <input type="checkbox" name="filters[]" value="sesame" id="sesame">
-  <label for="sesame">sesame</label>
-  <input type="checkbox" name="filters[]" value="soy" id="soy">
-  <label for="soy">soy</label>
-  <input type="checkbox" name="filters[]" value="sulfite" id="sulfite">
-  <label for="sulfite">sulfite</label>
-  <input type="checkbox" name="filters[]" value="nut" id="nut">
-  <label for="nut">nut</label>
-  <input type="checkbox" name="filters[]" value="wheat" id="wheat">
-  <label for="wheat">wheat</label>
-  <input type="checkbox" name="filters[]" value="lacto" id="lacto">
-  <label for="lacto">lacto</label>
-  <input type="checkbox" name="filters[]" value="ovo" id="ovo">
-  <label for="ovo">ovo</label>
-  <input type="checkbox" name="filters[]" value="pescetarian" id="pescetarian">
-  <label for="pescetarian">pescetarian</label>
-  <input type="checkbox" name="filters[]" value="vegan" id="vegan">
-  <label for="vegan">vegan</label>
-  <input type="checkbox" name="filters[]" value="vegetarian" id="vegetarian">
-  <label for="vegetarian">vegetarian</label>
-  <input type="checkbox" name="filters[]" value="paleo" id="paleo">
-  <label for="paleo">paleo</label>
-  <input type = "text" name="search">
-  <input type="submit">
-  </form>
