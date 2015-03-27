@@ -39,8 +39,10 @@ Main Components
   position: relative;
   height: 150px;
   background-color: #331d35;
+  margin-top: 0;
 }
 .cd-header h1 {
+  margin-top: 0;
   color: #ffffff;
   line-height: 150px;
   text-align: center;
@@ -59,6 +61,7 @@ Main Components
 .cd-main-content {
   position: relative;
   min-height: 100vh;
+  background-color: #f3f3f3;
 }
 .cd-main-content:after {
   content: "";
@@ -157,6 +160,7 @@ xtab-filter
   /* this way the placehodler is alway visible */
   display: block;
 }
+
 .cd-tab-filter a {
   display: block;
   /* set same size of the .cd-tab-filter */
@@ -258,8 +262,9 @@ xgallery
 }
 .cd-gallery li {
   margin-bottom: 1.6em;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-  display: none;
+-webkit-box-shadow: 0px 0px 14px -3px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 14px -3px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 14px -3px rgba(0,0,0,0.75);  display: none;
 }
 .cd-gallery li.gap {
   /* used in combination with text-align: justify to align gallery elements */
@@ -348,7 +353,7 @@ xfilter
   left: 0;
   height: 50px;
   width: 100%;
-  background-color: #41307c;
+  background-color: #413659;
   z-index: 2;
 }
 .cd-filter form {
@@ -364,7 +369,7 @@ xfilter
   color: #ffffff;
   font-size: 1.3rem;
   text-align: center;
-  background: #37296a;
+  background: #413659;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
   -moz-transition: opacity 0.3s;
@@ -406,7 +411,7 @@ xfilter
   text-indent: 100%;
   color: transparent;
   white-space: nowrap;
-  background: transparent url("../img/cd-icon-filter.svg") no-repeat center center;
+  background: transparent url("/assets/cd-icon-filter.svg") no-repeat center center;
   z-index: 3;
 }
 .cd-filter-trigger.filter-is-visible {
@@ -469,7 +474,7 @@ xcustom form elements
   top: 50%;
   width: 16px;
   height: 16px;
-  background: url("../img/cd-icon-arrow.svg") no-repeat center center;
+  background: url("/assets/cd-icon-arrow.svg") no-repeat center center;
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -543,7 +548,7 @@ xcustom form elements
   display: block;
   width: 16px;
   height: 16px;
-  background: url("../img/cd-icon-arrow.svg") no-repeat center center;
+  background: url("/assets/cd-icon-arrow.svg") no-repeat center center;
   pointer-events: none;
 }
 .cd-filter-block select {
@@ -609,7 +614,7 @@ xcustom form elements
   /* check mark style for check boxes */
   width: 16px;
   height: 16px;
-  background: url("../img/cd-icon-check.svg") no-repeat center center;
+  background: url("assets/cd-icon-check.svg") no-repeat center center;
 }
 .cd-filter-block .radio-label::before,
 .cd-filter-block .radio-label::after {
