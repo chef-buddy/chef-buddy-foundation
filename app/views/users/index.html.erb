@@ -1,3 +1,13 @@
+<%= render 'topbar' %>
+<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+
+<div id="messageContainer"><%=render 'initialMessage' %></div>
+<div id="recipeContainer"><%= render 'recipeCard' %></div>
+<div id="sideNav"><%= render '/home/sidenav' %></div>
+<div id="likedRecipes"><%= render 'likedRecipes' %></div>
+
+
+
 TODO:
 // Toggle topbar to sidebar after 10 selections
 // List of suggested recipes slides up
@@ -6,10 +16,3 @@ TODO:
 // When recipe trashed, remove from DOM
 // Show loading icon
 // On liked recipes page, option to trash or love (and/or rate 5 forks or something)
-<%= render 'topbar' %>
-<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-
-<div id="messageContainer"><%=render 'initialMessage' %></div>
-<div id="recipeContainer"><%= render 'recipeCard' %></div>
-<div id="sideNav"><%= render '/home/sidenav' %></div>
-<div id="likedRecipes"><%= render 'likedRecipes' %></div>
