@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
   get 'home/show'
-  post 'users/try'
   post 'users/random'
   post 'users/try'
   post 'users/trash'
-  post 'users/pass'
   get 'users/recipe_list'
   post 'users/recipe_list'
   root 'home#index'
