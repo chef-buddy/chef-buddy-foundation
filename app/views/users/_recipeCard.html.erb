@@ -70,7 +70,8 @@
 	<div class="container-recipeCard">
 		<header>
 			<div class="bio">
-        <img src="http://www.croop.cl/UI/twitter/images/up.jpg" alt="background" class="bg">
+        <%= link_to image_tag(@response[0]["largeImage"], :class=>"bg"), "http://www.yummly.com/recipe/#{@response[0]["id"]}" %>
+        <!-- <img src="http://www.croop.cl/UI/twitter/images/up.jpg" alt="background" class="bg"> -->
 				<div class="desc">
 					<h3>@carlf</h3>
 					<p>Carl Fredricksen is the protagonist in Up. He also appeared in Dug's Special Mission as a minor character.</p>
@@ -78,8 +79,9 @@
 			</div>
 
 			<div class="avatarcontainer">
-				<img src="http://www.croop.cl/UI/twitter/images/carl.jpg" alt="avatar" class="avatar">
-				<div class="hover">
+				<!-- <img src="http://www.croop.cl/UI/twitter/images/carl.jpg" alt="avatar" class="avatar"> -->
+				<%= @response[0]["recommendation_score"] %>
+        <div class="hover">
 						<div class="icon-twitter"></div>
 				</div>
 			</div>
@@ -89,16 +91,7 @@
 			<div class="data">
 				<ul>
 					<li>
-						2,934
-						<span>Tweets</span>
-					</li>
-					<li>
-						1,119
-						<span>Followers</span>
-					</li>
-					<li>
-						530
-						<span>Following</span>
+					<span><%= @response[0]["recipeName"] %></span>
 					</li>
 				</ul>
 			</div>

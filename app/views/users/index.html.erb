@@ -1,9 +1,7 @@
 <%= render 'topbar' %>
-<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
 
 <div id="messageContainer"><%=render 'initialMessage' %></div>
 <div id="recipeContainer"><%= render 'recipeCard' %></div>
-<div id="sideNav"><%= render '/home/sidenav' %></div>
 <div id="likedRecipes"><%= render 'likedRecipes' %></div>
 
 
