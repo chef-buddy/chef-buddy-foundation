@@ -1,5 +1,8 @@
 <div class="recipe-b-image">
-  <%= link_to image_tag(card["largeImage"]), "http://www.yummly.com/recipe/#{card["id"]}" %>
+  <%= link_to "http://www.yummly.com/recipe/#{card["id"]}" do %>
+    <%= image_tag(card["largeImage"]) %>
+    <div class="score text-center"><%= card["recommendation_score"] %></div>
+  <% end %>
 </div>
 <div class="recipe-name">
   <%= card["recipeName"] %>
