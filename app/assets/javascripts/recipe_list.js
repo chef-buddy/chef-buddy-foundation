@@ -9,6 +9,11 @@ $(document).ready(function($){
 		triggerFilter(false);
 	});
 
+	// select first filter tab
+	setTimeout(function () {
+		$('li.filter').eq(0).find('a').trigger('click');
+	}, 50);
+
 	function triggerFilter($bool) {
 		var elementsToTrigger = $([$('.cd-filter-trigger'), $('.cd-filter'), $('.cd-tab-filter'), $('.cd-gallery')]);
 		elementsToTrigger.each(function(){
@@ -123,6 +128,70 @@ $(document).ready(function($){
 	    	}
 	  	}, 200 );
 	});
+
+	$('.cd-gallery').on('click', '.js-like', function() {
+		var href = $(this).attr('href');
+		var $li = $(this).parents('li.mix');
+		var $selectedTabLink = $('li.filter a.selected');
+		var isSuggestedTab = $selectedTabLink.attr('data-type') == "suggested-recipes";
+		var isBrowseTab = $selectedTabLink.attr('data-type') == "browse-recipes";
+
+		// Move to my recipes
+		$li.
+			removeClass('browse-recipes').
+			removeClass('suggested-recipes').
+			addClass('my-recipes');
+			// find('.recipe-action').remove();
+
+
+
+		// post the like
+			$.post(href, function() {
+
+				if (isSuggestedTab) {
+					// get new one
+					$.get('/users/sample', function(html) {
+						// put it to the list
+						$('.cd-gallery ul').append(html);
+						// refresh the tab
+						$selectedTabLink.click();
+					});
+				} else {
+					// refresh the tab
+					$selectedTabLink.click();
+				}
+			});
+
+		return false;
+	});
+
+	$('.cd-gallery').on('click', '.js-trash', function() {
+		var href = $(this).attr('href');
+
+		var $li = $(this).parents('li.mix');
+		var $selectedTabLink = $('li.filter a.selected');
+		var isSuggestedTab = $selectedTabLink.attr('data-type') == "suggested-recipes";
+		var isBrowseTab = $selectedTabLink.attr('data-type') == "browse-recipes";
+
+		$.post(href, function() {});
+		$li.remove();
+
+		if (isSuggestedTab) {
+			// get new one
+			$.get('/users/sample', function(html) {
+				// put it to the list
+				$('.cd-gallery ul').append(html);
+				// refresh the tab
+				$selectedTabLink.click();
+			});
+		} else  {
+			// refresh the tab
+			$selectedTabLink.click();
+		}
+
+		return false;
+	});
+
 });
 
 /*****************************************************
@@ -203,9 +272,9 @@ var buttonFilter = {
 	    !self.outputString.length && (self.outputString = 'all');
 
     	// Send the output string to MixItUp via the 'filter' method:
-		if(self.$container.mixItUp('isLoaded')){
-	    	self.$container.mixItUp('filter', self.outputString);
-		}
+			if(self.$container.mixItUp('isLoaded')){
+		    	self.$container.mixItUp('filter', self.outputString);
+			}
   	}
 };
 

@@ -643,3 +643,9 @@ xcustom form elements
     display: none;
   }
 }
+
+img {
+  max-height: 450px;
+}
+
+.my-recipes .recipe-actions { display: none; }

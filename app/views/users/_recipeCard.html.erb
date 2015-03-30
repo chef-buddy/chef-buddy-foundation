@@ -1,105 +1,20 @@
-  <!-- <div class="recipe-card">
-    <div class="recipe-image">
-    <%= link_to image_tag(@response[0]["largeImage"]), "http://www.yummly.com/recipe/#{@response[0]["id"]}" %>
-    <span class="score"><%= @response[0]["recommendation_score"] %></span>
-    </div>
-    <div class="recipe-title">
-      <%= @response[0]["recipeName"] %>
-    </div>
-    <div class="recipe-action">
-      <div class="dislike small-6 columns">
-        <a href="#">Trash</a>
-      </div>
-      <div class="like small-6 columns">
-        <a href="#">Try</a>
-      </div>
-    </div>
-  </div> -->
-
 <div class="row">
   <div class="recipe-card small-6 small-offset-3 columns">
-    <div class="recipe-image" style="background-image: url('<%= @response[0]["largeImage"] %>')">
-      <!-- <%= link_to image_tag(@response[0]["largeImage"]), "http://www.yummly.com/recipe/#{@response[0]["id"]}" %> -->
-      <div class="score text-center"><%= @response[0]["recommendation_score"] %></div>
+    <div class="recipe-image" style="background-image: url('<%= card["largeImage"] %>')">
+      <div class="score text-center"><%= card["recommendation_score"] %></div>
     </div>
 
     <div class="recipe-title">
-      <!-- <%= link_to (@response[0]["recipeName"]), "http://www.yummly.com/recipe/#{@response[0]["id"]}" %> -->
-      <%= @response[0]["recipeName"] %>
+      <!-- <%= link_to (card["recipeName"]), "http://www.yummly.com/recipe/#{card["id"]}" %> -->
+      <%= card["recipeName"] %>
     </div>
 
     <div class="recipe-action">
-      <%= link_to "Trash", users_trash_path(recipe_id: @response[0]["id"], recipe_name: @response[0]["recipeName"],
-      recipe_url:@response[0]["id"], recipe_large_image: @response[0]["largeImage"]), method: :post, :class=> 'like small-6 columns' %>
-      <%= link_to "Try", users_try_path(recipe_id: @response[0]["id"], recipe_name: @response[0]["recipeName"],
-        recipe_url:@response[0]["id"], recipe_large_image: @response[0]["largeImage"]), method: :post, :class=> 'like small-6 columns' %>
+      <%= link_to "Trash", users_trash_path(recipe_id: card["id"], recipe_name: card["recipeName"],
+      recipe_url:card["id"], recipe_large_image: card["largeImage"]), method: :post, :class=> 'like small-6 columns js-trash' %>
+      <%= link_to "Try", users_try_path(recipe_id: card["id"], recipe_name: card["recipeName"],
+        recipe_url:card["id"], recipe_large_image: card["largeImage"]), method: :post, :class=> 'like small-6 columns js-like' %>
     </div>
 
   </div>
 </div>
-
-
-
-<div class="row">
-  <div class="testContainer large-10 columns" style="background-image: url('<%= @response[0]["largeImage"] %>')">
-      <div class="test-card large-4 columns text-center">
-        <div class="test-title text-center"><%= @response[0]["recipeName"] %></div>
-        <div class="test-ingredients large-12 columns">
-
-          <div class="quantity large-4 columns">
-            <!-- <p>20oz</p>
-            <p>2 Cups</p>
-            <p>20 oz</p>
-            <p>20 oz</p>
-            <p>20 oz</p>
-            <p>20 oz</p>
-            <p>20 oz</p> -->
-          </div>
-          <div class="ingredient large-12 columns">
-            <%= @response[0]["ingredients"].each do |i| %>
-            <p><%= i %></p>
-            <% end %>
-          </div>
-        </div>
-        <div class="test-share"></div>
-      </div>
-    </div>
-  </div>
-
-
-	<div class="container-recipeCard">
-		<header>
-			<div class="bio">
-        <%= link_to image_tag(@response[0]["largeImage"], :class=>"bg"), "http://www.yummly.com/recipe/#{@response[0]["id"]}" %>
-        <!-- <img src="http://www.croop.cl/UI/twitter/images/up.jpg" alt="background" class="bg"> -->
-				<div class="desc">
-					<h3>@carlf</h3>
-					<p>Carl Fredricksen is the protagonist in Up. He also appeared in Dug's Special Mission as a minor character.</p>
-				</div>
-			</div>
-
-			<div class="avatarcontainer">
-				<!-- <img src="http://www.croop.cl/UI/twitter/images/carl.jpg" alt="avatar" class="avatar"> -->
-				<%= @response[0]["recommendation_score"] %>
-        <div class="hover">
-						<div class="icon-twitter"></div>
-				</div>
-			</div>
-		</header>
-
-		<div class="content">
-			<div class="data">
-				<ul>
-					<li>
-					<span><%= @response[0]["recipeName"] %></span>
-					</li>
-				</ul>
-			</div>
-
-			<div class="follow"> <div class="icon-twitter"></div> Follow</div>
-		</div>
-
-	</div>
-
-</body>
-</html>

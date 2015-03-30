@@ -33,6 +33,11 @@ class UsersController < ApplicationController
     @response = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/')
   end
 
+  def sample
+    @response = HTTParty.get("http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/?user=#{current_user.id}&format=json")
+    render layout: "blank"
+  end
+
   # GET /users/1
   # GET /users/1.json
   def show
@@ -87,7 +92,8 @@ class UsersController < ApplicationController
    })
     Recipe.find_or_create_by(name: params[:recipe_name], url: params[:recipe_url],
     picture: params[:recipe_large_image], user_id: current_user.id)
-    render 'index'
+  # render 'index'
+  render json: {status: :ok}
 end
 
 
@@ -99,7 +105,8 @@ def trash
     user: "#{current_user.id}",
     recipe: params[:recipe_id],
     })
-    render 'index'
+  # render 'index'
+  render json: {status: :ok}
 end
 
 
