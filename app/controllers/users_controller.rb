@@ -10,8 +10,8 @@ class UsersController < ApplicationController
     @user = User.find_by_id(current_user.id)
   end
 
-#http://chefbuddy.herokuapp.com/api/v1/recipe_list/?user=2&filter=paleo&filter=dairy
-
+#http://tastebud.elasticbeanstalk.com/api/v1/recipe_list/?user=2&filter=paleo&filter=dairy
+#http://tastebud.elasticbeanstalk.com/api/v1/recipe_list/
   def recipe_list
     temp_string = ""
     temp_options = params["filters"] || []
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       temp_string += "&filter=#{to}"
     end
     @user = User.find_by_id(current_user.id)
-    @response = HTTParty.get("http://chefbuddy.herokuapp.com/api/v1/recipe_list/?user=#{current_user.id}&" + "#{temp_string}" +"&search=#{temp_search}")
+    @response = HTTParty.get("http://tastebud.elasticbeanstalk.com/api/v1/recipe_list/?user=#{current_user.id}&" + "#{temp_string}" +"&search=#{temp_search}")
     @options = ["dairy", "egg", "gluten", "sesame", "soy", "sulfite", "nut",
       "wheat", "lacto", "ovo", "pescetarian", "vegan", "vegetarian", "paleo"]
   end
@@ -30,11 +30,11 @@ class UsersController < ApplicationController
   end
 
   def random
-    @response = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/')
+    @response = HTTParty.post('http://tastebud.elasticbeanstalk.com/api/v1/suggested_recipe/')
   end
 
   def sample
-    @response = HTTParty.get("http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/?user=#{current_user.id}&format=json")
+    @response = HTTParty.get("http://tastebud.elasticbeanstalk.com/api/v1/suggested_recipe/?user=#{current_user.id}&format=json")
     render layout: "blank"
   end
 
@@ -85,7 +85,7 @@ class UsersController < ApplicationController
  def try
    @user = User.find_by_id(current_user.id)
    @recipes = Recipe.all
-   @response = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/',
+   @response = HTTParty.post('http://tastebud.elasticbeanstalk.com/api/v1/suggested_recipe/',
    body: { liked: "1",
      user: "#{current_user.id}",
      recipe: params[:recipe_id],
@@ -100,7 +100,7 @@ end
 def trash
   @user = User.find_by_id(current_user.id)
   @recipes = Recipe.all
-  @response = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/',
+  @response = HTTParty.post('http://tastebud.elasticbeanstalk.com/api/v1/suggested_recipe/',
   body: { liked: "-1",
     user: "#{current_user.id}",
     recipe: params[:recipe_id],
@@ -111,7 +111,7 @@ end
 
 
 #def pass
-#  @response = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/',
+#  @response = HTTParty.post('http://tastebud.elasticbeanstalk.com/api/v1/suggested_recipe/',
 #  :body => { :liked => '0',
 #    :user => "#{current_user.id}",
 #    :id => params[:recipe_id],
@@ -141,11 +141,11 @@ end
     params.require(:user).permit(:first_name, :last_name, :uid, :provider, recipe_attributes: [:name, :url, :picture])
   end
   private def get_a_random_recipe
-    @response = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/random_recipe/')
+    @response = HTTParty.post('http://tastebud.elasticbeanstalk.com/api/v1/random_recipe/')
   end
 
   private def post_suggested_recipe
-    @response = HTTParty.post('http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/')
+    @response = HTTParty.post('http://tastebud.elasticbeanstalk.com/api/v1/suggested_recipe/')
   end
 
 end
