@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post 'users/try'
   post 'users/trash'
   get 'users/recipe_list'
+  get 'users/sample'
   post 'users/recipe_list'
   root 'home#index'
   resources :recipes

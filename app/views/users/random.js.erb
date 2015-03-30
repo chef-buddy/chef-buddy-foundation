@@ -1,1 +1,1 @@
-$('#recipeContainer').html("<%= j render('recipeCard') %>");
+$('#recipeContainer').html("<%= j render('recipeCard', card: @response.first) %>");
