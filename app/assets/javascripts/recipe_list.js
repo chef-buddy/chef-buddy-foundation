@@ -1,6 +1,9 @@
 
 
 $(document).ready(function($){
+
+	// $("#browse_recipes li").infinitescroll('bind');
+
 	//open/close lateral filter
 	$('.cd-filter-trigger').on('click', function(){
 		triggerFilter(true);
@@ -294,4 +297,12 @@ $('.recipe-b-image img').each(function(i, item) {
         var newMargin = (div_width-img_width)/2+'px';
         $(item).css({'margin-left': newMargin});
     }
+});
+
+$(window).scroll(function() {
+  if($(window).scrollTop() == $(document).height() - $(window).height()) {
+		$.get("/recipes.json", function(data) {
+			console.debug(data);
+		});
+	}
 });

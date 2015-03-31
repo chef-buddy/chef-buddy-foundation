@@ -9,25 +9,24 @@
 					<a data-type="browse-recipes" href="#0"></a> <!-- selected option on mobile -->
 				</li>
         <li class="filter" data-filter=".suggested-recipes"><a href="#0" data-type="suggested-recipes">Suggested Recipes</a></li>
-				<li class="filter" data-filter=".browse-recipes"><a href="#0" data-type="browse-recipes">Browse Recipes</a></li>
+				<li class="filter browse-recipes" data-filter=".browse-recipes"><a href="#0" data-type="browse-recipes">Browse Recipes</a></li>
 				<li class="filter" data-filter=".my-recipes"><a href="#0" data-type="my-recipes">My Recipes</a></li>
 			</ul> <!-- cd-filters -->
 		</div> <!-- cd-tab-filter -->
 	</div> <!-- cd-tab-filter-wrapper -->
 
 	<section class="cd-gallery">
-		<ul>
+		<ul id="suggested_recipes">
       <li class="mix suggested-recipes check1 radio2 option3">
-        <%= render 'recipe_card', card: @response[0] %>
+        <%= render partial: 'recipe_card', object: @response[0] %>
       </li>
+		</ul>
 
-      <% 8.times.each do |n = 0| %>
-			<li class="mix browse-recipes check1 radio2 option3">
-        <%= render 'recipe_card', card: @response[n + 1] %>
-      </li>
-      <% n += 1 %>
-      <% end %>
+		<ul id="browse_recipes">
+        <%= render partial: 'recipe_card_li', collection: @response %>
+		</ul>
 
+		<ul id="user_recipes">
       <% @user.recipes.each do |r| %>
       <li class="mix my-recipes check1 radio2 option3">
         <div class="recipe-b-img">
@@ -37,55 +36,98 @@
           <%= r.name %>
         </div>
       </li>
-      <% end %>
+			<% end %>
+		</ul>
+
 			<li class="gap"></li>
 		</ul>
 		<div class="cd-fail-message">No results found</div>
 	</section> <!-- cd-gallery -->
 
 	<div class="cd-filter">
-		<form>
-			<div class="cd-filter-block">
-				<h4>Filters</h4>
+		<form action=recipe_list method="GET">
 
+			<div class="cd-filter-block">
+				<h4>Search</h4>
 				<div class="cd-filter-content">
-          <form action=recipe_list method="GET">
-            <input type="checkbox" name="filters[]" value="dairy" id="dairy">
-            <label for="dairy">dairy</label>
-            <input type="checkbox" name="filters[]" value="egg" id="egg">
-            <label for="egg">egg</label>
-            <input type="checkbox" name="filters[]" value="gluten" id="gluten">
-            <label for="gluten">gluten</label>
-            <input type="checkbox" name="filters[]" value="sesame" id="sesame">
-            <label for="sesame">sesame</label>
-            <input type="checkbox" name="filters[]" value="soy" id="soy">
-            <label for="soy">soy</label>
-            <input type="checkbox" name="filters[]" value="sulfite" id="sulfite">
-            <label for="sulfite">sulfite</label>
-            <input type="checkbox" name="filters[]" value="nut" id="nut">
-            <label for="nut">nut</label>
-            <input type="checkbox" name="filters[]" value="wheat" id="wheat">
-            <label for="wheat">wheat</label>
-            <input type="checkbox" name="filters[]" value="lacto" id="lacto">
-            <label for="lacto">lacto</label>
-            <input type="checkbox" name="filters[]" value="ovo" id="ovo">
-            <label for="ovo">ovo</label>
-            <input type="checkbox" name="filters[]" value="pescetarian" id="pescetarian">
-            <label for="pescetarian">pescetarian</label>
-            <input type="checkbox" name="filters[]" value="vegan" id="vegan">
-            <label for="vegan">vegan</label>
-            <input type="checkbox" name="filters[]" value="vegetarian" id="vegetarian">
-            <label for="vegetarian">vegetarian</label>
-            <input type="checkbox" name="filters[]" value="paleo" id="paleo">
-            <label for="paleo">paleo</label>
-            <input type = "text" name="search">
+					<input type = "text" name="search" placeholder="Search.." style="margin-top: 1em">
+				</div>
+			</div>
+
+			<div class="cd-filter-block">
+				<h4>Food Allergies</h4>
+
+				<ul class="cd-filter-content cd-filters list">
+          <li>
+						<input type="checkbox" name="filters[]" value="dairy" id="dairy" class="filter">
+            <label for="dairy" class="checkbox-label">Dairy</label>
+					</li>
+					<li>
+						<input type="checkbox" name="filters[]" value="egg" id="egg" class="filter">
+            <label for="egg" class="checkbox-label">Egg</label>
+					</li>
+					<li>
+            <input type="checkbox" name="filters[]" value="gluten" id="gluten" class="filter">
+            <label for="gluten" class="checkbox-label">Gluten</label>
+					</li>
+					<li>
+            <input type="checkbox" name="filters[]" value="sesame" id="sesame" class="filter">
+            <label for="sesame" class="checkbox-label">Sesame</label>
+					</li>
+					<li>
+            <input type="checkbox" name="filters[]" value="soy" id="soy" class="filter">
+            <label for="soy" class="checkbox-label">Soy</label>
+					</li>
+					<li>
+            <input type="checkbox" name="filters[]" value="sulfite" id="sulfite" class="filter">
+            <label for="sulfite" class="checkbox-label">Sulfite</label>
+					</li>
+					<li>
+            <input type="checkbox" name="filters[]" value="nut" id="nut" class="filter">
+            <label for="nut" class="checkbox-label">Nut</label>
+					</li>
+					<li>
+            <input type="checkbox" name="filters[]" value="wheat" id="wheat" class="filter">
+            <label for="wheat" class="checkbox-label">Wheat</label>
+					</li>
+					</ul>
+				</div>
+
+				<div class="cd-filter-block">
+					<h4>Dietary Preference</h4>
+
+					<ul class="cd-filter-content cd-filters list">
+						<li>
+							<input type="checkbox" name="filters[]" value="lacto" id="lacto" class="filter">
+							<label for="lacto" class="checkbox-label">Lacto</label>
+						</li>
+	          <li>
+							<input type="checkbox" name="filters[]" value="ovo" id="ovo" class="filter">
+	            <label for="ovo" class="checkbox-label">Ovo</label>
+						</li>
+						<li>
+	            <input type="checkbox" name="filters[]" value="pescetarian" id="pescetarian" class="filter">
+	            <label for="pescetarian" class="checkbox-label">Pescetarian</label>
+						</li>
+						<li>
+	            <input type="checkbox" name="filters[]" value="vegan" id="vegan" class="filter">
+	            <label for="vegan" class="checkbox-label">Vegan</label>
+						</li>
+						<li>
+	            <input type="checkbox" name="filters[]" value="vegetarian" id="vegetarian" class="filter">
+	            <label for="vegetarian" class="checkbox-label">Vegetarian</label>
+						</li>
+						<li>
+	            <input type="checkbox" name="filters[]" value="paleo" id="paleo" class="filter">
+	            <label for="paleo" class="checkbox-label">Paleo</label>
+						</li>
             <input type="submit">
           </form>
 				</div> <!-- cd-filter-content -->
-			</div> <!-- cd-filter-block -->
+			</ul> <!-- cd-filter-block -->
 		</form>
 
-		<a href="#0" class="cd-close">Close</a>
+		<a href="#0" class="cd-close"><</a>
 	</div> <!-- cd-filter -->
 
 	<a href="#0" class="cd-filter-trigger">Filters</a>

@@ -7,52 +7,53 @@
 <%= form_for(resource, as: resource_name, :class=> 'form', url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 <div class="form-container row">
-  <div class="email-address large-10 columns">
+
+  <div class="field large-5 large-offset-1 columns ">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autofocus: true %>
+  </div>
+
+  <div class="field large-5 columns">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autofocus: true %>
+  </div>
+
+  <div class="field email-address large-10 large-offset-1 columns">
     <label>Email Address
     <%= f.email_field :email, autofocus: true %>
     </label>
   </div>
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true %>
-  </div>
-
-  <div class="field">
+  <!-- <div class="field large-10">
     <%= f.label :zip %><br />
     <%= f.text_field :zip, autofocus: true %>
-  </div>
-  
+  </div> -->
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="current-password large-10 columns">
+  <div class="current-password large-10 large-offset-1 columns">
     <label>Current Password <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %>
     </label>
   </div>
 
-  <div class="new-password large-10 columns">
-    <label>New Password <i>(leave blank if you don't want to change it)</i><br />
+  <div class="new-password large-5 large-offset-1 columns">
+    <label>New Password <br />
     <%= f.password_field :password, autocomplete: "off" %>
     </label>
   </div>
 
-  <div class="password-confirmation large-10 columns">
+  <div class="password-confirmation large-5 columns">
     <!-- <%= f.label :password_confirmation %><br /> -->
-    <label>Password Confirmation Yo!
+    <label>Password Confirmation
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
     </label>
   </div>
 
 <div class="row">
-  <div class="actions large-10 columns">
+  <div class="actions large-10 large-offset-1 columns">
     <%= f.submit "Update" %>
     <%= button_to "Deactivate my Account", registration_path(resource_name), :class=>'deactivate', data: { confirm: "Are you sure?" }, method: :delete %>
   </div>

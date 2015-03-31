@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="recipe-card small-6 small-offset-3 columns">
+    <div class="recipe-image" style="background-image: url('<%= card["largeImage"] %>')">
+      <div class="score text-center"><%= card["recommendation_score"] %></div>
+    </div>
+
+    <div class="recipe-title">
+      <!-- <%= link_to (card["recipeName"]), "http://www.yummly.com/recipe/#{card["id"]}" %> -->
+      <%= card["recipeName"] %>
+    </div>
+
+    <div class="recipe-action">
+      <%= link_to "Trash", users_trash_path(recipe_id: card["id"], recipe_name: card["recipeName"],
+      recipe_url:card["id"], recipe_large_image: card["largeImage"]), method: :post, :class=> 'like small-6 columns js-trash' %>
+      <%= link_to "Try", users_try_path(recipe_id: card["id"], recipe_name: card["recipeName"],
+        recipe_url:card["id"], recipe_large_image: card["largeImage"]), method: :post, :class=> 'like small-6 columns js-like' %>
+    </div>
+
+  </div>
+</div>

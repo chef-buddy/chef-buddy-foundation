@@ -15,6 +15,7 @@
 //= require foundation
 //= require_tree .
 //= require mixitup
+//= require jquery.infinitescroll
 
 $(function(){ $(document).foundation(); });
 

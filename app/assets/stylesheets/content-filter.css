@@ -140,7 +140,7 @@ xtab-filter
   display: inline-block;
   width: 16px;
   height: 16px;
-  background: url("../img/cd-icon-arrow.svg") no-repeat center center;
+  background: url("/assets/cd-icon-arrow.svg") no-repeat center center;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
@@ -307,6 +307,7 @@ box-shadow: 0px 0px 14px -3px rgba(0,0,0,0.75);  display: none;
   }
   .cd-gallery li {
     width: 23%;
+    max-height: 350px;
   }
   .cd-gallery.filter-is-visible {
     /* reduce width when filter is visible */
@@ -367,7 +368,8 @@ xfilter
   line-height: 50px;
   width: 60px;
   color: #ffffff;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  font-weight: bold;
   text-align: center;
   background: #413659;
   opacity: 0;
@@ -504,7 +506,7 @@ xcustom form elements
 .cd-filter-block input[type='text'],
 .cd-filter-block select {
   width: 100%;
-  padding: .8em;
+  padding: 1em;
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
@@ -519,7 +521,7 @@ xcustom form elements
   background-color: #ffffff;
   border-color: #41307c;
 }
-.cd-filter-block input[type='search'] {
+.cd-filter-block input[type='text'] {
   /* custom style for the search element */
   border-color: transparent;
   background-color: #e6e6e6;
@@ -610,11 +612,12 @@ xcustom form elements
   /* check mark - hidden */
   display: none;
 }
-.cd-filter-block .checkbox-label::after {
+.cd-filter-block input[type=checkbox]::after {
   /* check mark style for check boxes */
   width: 16px;
   height: 16px;
-  background: url("assets/cd-icon-check.svg") no-repeat center center;
+  color: white;
+  background: url("/assets/cd-icon-check.svg") no-repeat center center;
 }
 .cd-filter-block .radio-label::before,
 .cd-filter-block .radio-label::after {
@@ -644,8 +647,35 @@ xcustom form elements
   }
 }
 
+/*.cd-gallery .suggested-recipes li {
+  width: 90% !important;
+}*/
+
+.cd-gallery .suggested-recipes {
+  width: 33%;
+}
+
 img {
   max-height: 450px;
 }
 
-.my-recipes .recipe-actions { display: none; }
+.my-recipes .recipe-actions {
+  display: none;
+}
+
+.suggested-recipes {
+  margin-left: 35%;
+}
+
+ul {
+list-style-type: none;
+}
+
+/*.cd-filter-content label {
+  font-size: 1.3em;
+  padding: .2em;
+}*/
+
+/*.cd-filter-content input[type=checkbox]:checked label:active {
+  color: red;
+}*/

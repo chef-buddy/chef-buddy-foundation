@@ -1,10 +1,12 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
-  # GET /recipes
-  # GET /recipes.json
+  respond_to :json, only: %i[index]
+  respond_to :html
+
+
   def index
-    @recipes = Recipe.all
+    respond_with(@recipes = Recipe.all.page(params[:page]))
   end
 
   # GET /recipes/1
