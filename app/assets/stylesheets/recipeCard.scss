@@ -22,15 +22,16 @@ body {
 }
 
 .recipe-name  {
-  padding: 1.2em;
+  padding: 0em 1.5em 0em 1.5em;
   text-align: center;
   font-size: 1.5em;
   // color: #7f8c8d;
   background-color: white;
   letter-spacing: .2em;
   font-weight: bold;
-  max-height: 75px;
+  height: 75px;
   overflow: hidden;
+  vertical-align: middle;
 }
 
 .recipe-action {
