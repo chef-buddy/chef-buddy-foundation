@@ -18,4 +18,10 @@
 
 $(function(){ $(document).foundation(); });
 
+$('#cd-gallery').mixItUp({
+	load: {
+		filter: '.category-1'
+	}
+});
+
 $(document).foundation('dropdown', 'reflow');

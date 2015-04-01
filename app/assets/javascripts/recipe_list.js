@@ -2,8 +2,6 @@
 
 $(document).ready(function($){
 
-	// $("#browse_recipes li").infinitescroll('bind');
-
 	//open/close lateral filter
 	$('.cd-filter-trigger').on('click', function(){
 		triggerFilter(true);
@@ -109,7 +107,7 @@ $(document).ready(function($){
 
 	$(".cd-filter-content input[type='search']").keyup(function(){
 	  	// Delay function invoked to make sure user stopped typing
-	  	delay(function(){
+	  	delay(function() {
 	    	inputText = $(".cd-filter-content input[type='search']").val().toLowerCase();
 	   		// Check to see if input field is empty
 	    	if ((inputText.length) > 0) {
@@ -127,7 +125,7 @@ $(document).ready(function($){
 	      		$('.cd-gallery ul').mixItUp('filter', $matching);
 	    	} else {
 	      		// resets the filter to show all item if input is empty
-	      		$('.cd-gallery ul').mixItUp('filter', 'all');
+	      		$('.cd-gallery ul').mixItUp('filter', 'suggested-recipes');
 	    	}
 	  	}, 200 );
 	});
@@ -141,8 +139,8 @@ $(document).ready(function($){
 
 		// Move to my recipes
 		$li.
-			removeClass('browse-recipes').
-			removeClass('suggested-recipes').
+			// removeClass('browse-recipes').
+			// removeClass('suggested-recipes').
 			addClass('my-recipes');
 			// find('.recipe-action').remove();
 
@@ -158,6 +156,8 @@ $(document).ready(function($){
 					$.get('/users/sample', function(html) {
 						// put it to the list
 						$('#suggested_recipes li').html(html);
+
+						
 						// refresh the tab
 						$selectedTabLink.click();
 					});
