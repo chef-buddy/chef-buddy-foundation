@@ -12,7 +12,6 @@
           <a href="#"><%= current_user.email %></a>
           <ul class="dropdown">
             <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
-            <li><%= link_to "Suggested Recipes", users_recipe_list_path %></li>
             <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
           </ul>
         </li>

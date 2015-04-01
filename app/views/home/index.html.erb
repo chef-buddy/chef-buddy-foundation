@@ -1,4 +1,13 @@
-<%= render 'users/topbar' %>
 <div class="home-container">
-<img src="/assets/tastebud-1.png">
+  <img src="/assets/tastebud-1.png">
+  <div class="row">
+    <div class="sign-in-a large-4 large-offset-4 columns">
+      <%= link_to "Sign In", new_user_session_path %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="sign-up-a large-4 large-offset-4 columns">
+      <%= link_to "Create an Account", new_user_registration_path %>
+    </div>
+  </div>
 </div>

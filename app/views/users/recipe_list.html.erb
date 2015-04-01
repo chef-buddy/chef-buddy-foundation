@@ -26,7 +26,7 @@
         <%= render partial: 'recipe_card_li', collection: @response %>
 		</ul>
 
-		<ul id="user_recipes">
+		<ul id="my_recipes">
       <% @user.recipes.each do |r| %>
       <li class="mix my-recipes check1 radio2 option3">
         <div class="recipe-b-img">
@@ -107,7 +107,7 @@
 						</li>
 						<li>
 	            <input type="checkbox" name="filters[]" value="pescetarian" id="pescetarian" class="filter">
-	            <label for="pescetarian" class="checkbox-label">Pescetarian</label>
+	            <label for="pescetarian" class="checkbox-label">Prescetarian</label>
 						</li>
 						<li>
 	            <input type="checkbox" name="filters[]" value="vegan" id="vegan" class="filter">
@@ -127,7 +127,7 @@
 			</ul> <!-- cd-filter-block -->
 		</form>
 
-		<a href="#0" class="cd-close"><</a>
+		<a href="#0" class="cd-close">CLOSE</a>
 	</div> <!-- cd-filter -->
 
 	<a href="#0" class="cd-filter-trigger">Filters</a>

@@ -1,15 +1,15 @@
 <div class="recipe-b-image">
   <%= link_to "http://www.yummly.com/recipe/#{recipe_card["id"]}" do %>
     <%= image_tag(recipe_card["largeImage"]) %>
-    <div class="score text-center"><%= recipe_card["recommendation_score"] %></div>
   <% end %>
+  <!-- <div class="score text-center"><%= recipe_card["recommendation_score"] %></div> -->
 </div>
 <div class="recipe-name">
   <%= recipe_card["recipeName"] %>
 </div>
   <div class="recipe-action">
-    <%= link_to "Trash", users_trash_path(recipe_id: recipe_card["id"], recipe_name: recipe_card["recipeName"],
+    <%= link_to "", users_trash_path(recipe_id: recipe_card["id"], recipe_name: recipe_card["recipeName"],
     recipe_url:recipe_card["id"], recipe_large_image: recipe_card["largeImage"]), method: :post, :class=> 'like small-6 columns js-trash' %>
-    <%= link_to "Try", users_try_path(recipe_id: recipe_card["id"], recipe_name: recipe_card["recipeName"],
+    <%= link_to "", users_try_path(recipe_id: recipe_card["id"], recipe_name: recipe_card["recipeName"],
     recipe_url:recipe_card["id"], recipe_large_image: recipe_card["largeImage"]), method: :post, :class=> 'like small-6 columns js-like' %>
   </div>
