@@ -32,6 +32,10 @@ body {
   font-weight: bold;
   height: 75px;
   overflow: hidden;
+  position: relative;
+  display:-webkit-box;
+-webkit-box-pack:center;
+-webkit-box-align:center;
 }
 
 .recipe-action {
