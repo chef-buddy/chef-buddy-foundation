@@ -125,7 +125,7 @@ $(document).ready(function($){
 	      		$('.cd-gallery ul').mixItUp('filter', $matching);
 	    	} else {
 	      		// resets the filter to show all item if input is empty
-	      		$('.cd-gallery ul').mixItUp('filter', 'suggested-recipes');
+	      		$('.cd-gallery ul').mixItUp('filter', 'all');
 	    	}
 	  	}, 200 );
 	});
@@ -146,8 +146,6 @@ $(document).ready(function($){
 
 			$('#cd-gallery').mixItUp();
 
-
-
 		// post the like
 			$.post(href, function() {
 
@@ -157,7 +155,6 @@ $(document).ready(function($){
 						// put it to the list
 						$('#suggested_recipes li').html(html);
 
-						
 						// refresh the tab
 						$selectedTabLink.click();
 					});
@@ -196,8 +193,27 @@ $(document).ready(function($){
 
 		return false;
 	});
-
 });
+
+      // //To add or remove class
+      // $('.js-like').click(function() {
+      //   var div = $(this).closest('div');
+			//
+      //   if (div.hasClass('my-recipes')) {
+      //     div.removeClass('blue');
+      //   }else {
+      //     li.addClass('blue');
+      //   }
+      //   //OR do the exact same thing (as if statement) using just this:
+      //   li.toggleClass('blue');
+
+// $(".js-like").click(function ()
+// {
+//     var selected = $(this).parent().hasClass('suggested-recipes', 'my-recipes');
+//     $(this).closest('div').removeClass('.recipe-action');
+//     if (!selected)
+//         $(this).addClass('.recipe-saved-action');
+// });
 
 /*****************************************************
 	MixItUp - Define a single object literal
