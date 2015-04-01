@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
-  respond_to :json, only: %i[index]
+  # respond_to :json, only: %i[index]
   respond_to :html
 
 

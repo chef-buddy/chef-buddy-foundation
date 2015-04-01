@@ -146,6 +146,8 @@ $(document).ready(function($){
 			addClass('my-recipes');
 			// find('.recipe-action').remove();
 
+			$('#cd-gallery').mixItUp();
+
 
 
 		// post the like
@@ -155,7 +157,7 @@ $(document).ready(function($){
 					// get new one
 					$.get('/users/sample', function(html) {
 						// put it to the list
-						$('.cd-gallery ul').append(html);
+						$('#suggested_recipes li').html(html);
 						// refresh the tab
 						$selectedTabLink.click();
 					});
@@ -281,28 +283,11 @@ var buttonFilter = {
   	}
 };
 
-$('.recipe-b-image img').each(function(i, item) {
-    var img_height = $(item).height();
-    var div_height = $(item).parent().height();
-    if(img_height<div_height){
-        //IMAGE IS SHORTER THAN CONTAINER HEIGHT - CENTER IT VERTICALLY
-        var newMargin = (div_height-img_height)/2+'px';
-        $(item).css({'margin-top': newMargin });
-    }else if(img_height>div_height){
-        //IMAGE IS GREATER THAN CONTAINER HEIGHT - REDUCE HEIGHT TO CONTAINER MAX - SET WIDTH TO AUTO
-        $(item).css({'width': 'auto', 'height': '100%'});
-        //CENTER IT HORIZONTALLY
-        var img_width = $(item).width();
-        var div_width = $(item).parent().width();
-        var newMargin = (div_width-img_width)/2+'px';
-        $(item).css({'margin-left': newMargin});
-    }
-});
 
-$(window).scroll(function() {
-  if($(window).scrollTop() == $(document).height() - $(window).height()) {
-		$.get("/recipes.json", function(data) {
-			console.debug(data);
-		});
-	}
-});
+// $(window).scroll(function() {
+//   if($(window).scrollTop() == $(document).height() - $(window).height()) {
+// 		$.get("/recipes.json", function(data) {
+// 			console.debug(data);
+// 		});
+// 	}
+// });

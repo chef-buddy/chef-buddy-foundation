@@ -34,8 +34,8 @@ class UsersController < ApplicationController
   end
 
   def sample
-    @response = HTTParty.post("http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/?user=#{current_user.id}&format=json")
-    render layout: "blank"
+    @response = HTTParty.get("http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/?user=#{current_user.id}&format=json")
+    render partial: "recipe_card", object: @response[0]
   end
 
   # GET /users/1

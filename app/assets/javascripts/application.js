@@ -15,10 +15,7 @@
 //= require foundation
 //= require_tree .
 //= require mixitup
-//= require jquery.infinitescroll
 
 $(function(){ $(document).foundation(); });
-
- $('#Container').mixItUp(); // an instance now exists in the session memory
 
 $(document).foundation('dropdown', 'reflow');
