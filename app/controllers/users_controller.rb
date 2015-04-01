@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
 #http://chefbuddy.herokuapp.com/api/v1/recipe_list/?user=2&filter=paleo&filter=dairy
-
+#http://tastebud.elasticbeanstalk.com/api/v1/recipe_list/
   def recipe_list
     temp_string = ""
     temp_options = params["filters"] || []
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   end
 
   def sample
-    @response = HTTParty.get("http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/?user=#{current_user.id}&format=json")
+    @response = HTTParty.post("http://chefbuddy.herokuapp.com/api/v1/suggested_recipe/?user=#{current_user.id}&format=json")
     render layout: "blank"
   end
 
