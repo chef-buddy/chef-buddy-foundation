@@ -135,6 +135,7 @@ $(document).ready(function($){
 		var isSuggestedTab = $selectedTabLink.attr('data-type') == "suggested-recipes";
 		var isBrowseTab = $selectedTabLink.attr('data-type') == "browse-recipes";
 
+		$(this).addClass('like-added');
 		// Move to my recipes
 		$li.
 			// removeClass('browse-recipes').
