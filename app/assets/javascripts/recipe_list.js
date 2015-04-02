@@ -1,5 +1,3 @@
-
-
 $(document).ready(function($){
 
 	//open/close lateral filter
@@ -228,7 +226,7 @@ var buttonFilter = {
 
   	// The "init" method will run on document ready and cache any jQuery objects we will need.
   	init: function(){
-    	var self = this; // As a best practice, in each method we will asign "this" to the variable "self" so that it remains scope-agnostic. We will use it to refer to the parent "buttonFilter" object so that we can share methods and properties between all parts of the object.
+    	var self = this;
 
     	self.$filters = $('.cd-main-content');
     	self.$container = $('.cd-gallery ul');
@@ -298,12 +296,3 @@ var buttonFilter = {
 			}
   	}
 };
-
-
-// $(window).scroll(function() {
-//   if($(window).scrollTop() == $(document).height() - $(window).height()) {
-// 		$.get("/recipes.json", function(data) {
-// 			console.debug(data);
-// 		});
-// 	}
-// });
