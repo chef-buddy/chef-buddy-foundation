@@ -173,18 +173,19 @@ $(document).ready(function($){
 		var isSuggestedTab = $selectedTabLink.attr('data-type') == "suggested-recipes";
 		var isBrowseTab = $selectedTabLink.attr('data-type') == "browse-recipes";
 
-		$.post(href, function() {});
-		$li.remove();
-
 		if (isSuggestedTab) {
 			// get new one
-			$.get('/users/sample', function(html) {
-				// put it to the list
-				$('.cd-gallery ul').append(html);
-				// refresh the tab
-				$selectedTabLink.click();
+			$.post(href, function() {
+				$.get('/users/sample', function(html) {
+					// put it to the list
+					$('#suggested_recipes li').html(html);
+					// refresh the tab
+					$selectedTabLink.click();
+				});
 			});
 		} else  {
+			$.post(href, function() {});
+			$li.remove();
 			// refresh the tab
 			$selectedTabLink.click();
 		}
