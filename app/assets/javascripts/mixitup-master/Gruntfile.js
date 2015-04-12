@@ -48,14 +48,14 @@ module.exports = function(grunt) {
 			addBanner:{
 				options: {
 					position: 'top',
-					banner: '/**!\n' + 
+					banner: '/**!\n' +
 							' * MixItUp v<%= pkg.version %>\n' +
 							' *\n' +
 							' * @copyright Copyright '+(new Date().getFullYear())+' KunkaLabs Limited.\n' +
 							' * @author    KunkaLabs Limited.\n' +
 							' * @link      https://mixitup.kunkalabs.com\n' +
 							' *\n' +
-							' * @license   Commercial use requires a commercial license.\n' + 
+							' * @license   Commercial use requires a commercial license.\n' +
 							' *            https://mixitup.kunkalabs.com/licenses/\n' +
 							' *\n' +
 							' *            Non-commercial use permitted under terms of CC-BY-NC license.\n' +
@@ -69,7 +69,7 @@ module.exports = function(grunt) {
 			}
 		}
 	});
-	
+
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-text-replace');
 	grunt.loadNpmTasks('grunt-bump');
@@ -79,19 +79,19 @@ module.exports = function(grunt) {
 		'jshint',
 		'uglify:build'
 	]);
-	
+
 	grunt.registerTask('release', function(target){
 		if(!target){
 			target = 'patch';
 		}
 		return grunt.task.run(
-			'bump-only:'+target, 
+			'bump-only:'+target,
 			'replace:clearBanner',
 			'usebanner:addBanner',
 			'build',
 			'bump-commit'
 		);
 	});
-	
+
 	grunt.registerTask('default', 'build');
 }
