@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
 
   def after_sign_in_path_for(resource)
-    session["user_return_to"] || users_path
+    session["user_return_to"] || users_recipe_list_path
   end
 
   protected
