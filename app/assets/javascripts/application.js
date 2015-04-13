@@ -13,8 +13,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require_tree .
 //= require mixitup
+//= require home.js
+//= require initialMessage.js
+//= require recipe_list.js
+//= require recipeCard.js
+//= require recipes.js
+//= require users.js
+//= require_tree .
+
+$('#Container').mixItUp();
 
 $(function(){ $(document).foundation(); });
 
